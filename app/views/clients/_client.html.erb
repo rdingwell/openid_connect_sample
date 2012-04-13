@@ -20,6 +20,7 @@
               <%= hidden_field_tag :client_id, client.identifier %>
               <%= hidden_field_tag :response_type, response_type %>
               <%= hidden_field_tag :scope, Scope.all.collect(&:name).join(' ') %>
+              <%= hidden_field_tag :redirect_uri, client.redirect_uris[0] %>
               <%= submit_tag response_type %>
             <% end %>
           </li>

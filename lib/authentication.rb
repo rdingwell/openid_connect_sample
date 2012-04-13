@@ -64,6 +64,7 @@ module Authentication
   end
 
   def require_id_token
+#    binding.pry
     @current_token = request.env[Rack::OAuth2::Server::Resource::ACCESS_TOKEN]
     unless @current_token.is_a? OpenIDConnect::ResponseObject::IdToken
       raise Rack::OAuth2::Server::Resource::Bearer::Unauthorized.new(:invalid_token, 'ID token is required')

@@ -60,6 +60,7 @@ class IdToken < ActiveRecord::Base
     extend ActiveSupport::Memoizable
 
     def decode(id_token)
+      
       OpenIDConnect::ResponseObject::IdToken.decode id_token, config[:public_key]
     rescue => e
       logger.error e.message
