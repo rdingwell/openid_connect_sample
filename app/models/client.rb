@@ -1,11 +1,11 @@
 class Client < ActiveRecord::Base
-  belongs_to :account
+
   has_many :access_tokens
   has_many :authorizations
 
   before_validation :setup, on: :create
 
-  validates :account,      presence: {unless: :dynamic?}
+
   validates :identifier,   presence: true, uniqueness: true
   validates :secret,       presence: true
   validates :name,         presence: true

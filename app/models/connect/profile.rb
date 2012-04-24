@@ -1,4 +1,4 @@
-class Connect::Fake < ActiveRecord::Base
+class Connect::Profile < ActiveRecord::Base
   belongs_to :account
 
   def user_info
@@ -21,6 +21,22 @@ class Connect::Fake < ActiveRecord::Base
     )
   end
 
+
+  def address
+    {
+      street_address: street_address,
+      locality:       locality,
+      region:         region,
+      postal_code:    postal_code,
+      country:        country
+    }
+  end
+  
+  def name
+    "#{given_name} #{family_name}"
+  end
+  
+  
   class << self
     def authenticate
       Account.create!(fake: create!)

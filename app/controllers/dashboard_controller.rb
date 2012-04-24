@@ -1,7 +1,7 @@
 class DashboardController < ApplicationController
-  before_filter :require_authentication
+  before_filter  :authenticate_admin!
 
   def show
-    @clients = current_account.clients
+    @clients = Client.all
   end
 end

@@ -1,12 +1,12 @@
 class ClientsController < ApplicationController
-  before_filter :require_authentication
+  before_filter  :authenticate_admin!
 
   def new
-    @client = current_account.clients.new
+    @client = Client.new
   end
 
   def create
-    @client = current_account.clients.new params[:client]
+    @client = Client.new params[:client]
     if @client.save
       redirect_to dashboard_url, flash: {
         notice: "Registered #{@client.name}"
@@ -18,11 +18,11 @@ class ClientsController < ApplicationController
   end
 
   def edit
-    @client = current_account.clients.find(params[:id])
+    @client = Client.find(params[:id])
   end
 
   def update
-    @client = current_account.clients.find(params[:id])
+    @client = Client.find(params[:id])
     if @client.update_attributes(params[:client])
       redirect_to dashboard_url, flash: {
         notice: "Updated #{@client.name}"
@@ -34,7 +34,7 @@ class ClientsController < ApplicationController
   end
 
   def destroy
-    current_account.clients.find(params[:id]).destroy
+    Client.find(params[:id]).destroy
     redirect_to dashboard_url
   end
 end

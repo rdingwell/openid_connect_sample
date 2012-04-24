@@ -1,0 +1,100 @@
+<%= form_for @profile, :method => :put do |f| %>
+
+<div>
+  <%= f.label :given_name %>
+  <%= f.text_field :given_name %>
+</div>
+
+<div>
+  <%= f.label :family_name %>
+  <%= f.text_field :family_name %>
+</div>
+
+<div>
+  <%= f.label :middle_name %>
+  <%= f.text_field :middle_name %>
+</div>
+
+<div>
+  <%= f.label :profile %>
+  <%= f.url_field :profile %>
+</div>
+
+
+<div>
+  <%= f.label :picture %>
+  <%= f.url_field :picture %>
+</div>
+
+
+<div>
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+</div>
+
+
+<div>
+  <%= f.label :verified %>
+  <%= f.text_field :verified %>
+</div>
+
+
+<div>
+  <%= f.label :gender %>
+  <%= f.text_field :gender %>
+</div>
+
+
+<div>
+  <%= f.label :birthday %>
+  <%= f.text_field :birthday %>
+</div>
+
+
+<div>
+  <%= f.label :zoneinfo %>
+  <%= f.text_field :zoneinfo %>
+</div>
+
+<div>
+  <%= f.label :locale %>
+  <%= f.text_field :locale %>
+</div>
+
+<div>
+  <%= f.label :street_address %>
+  <%= f.text_field :street_address %>
+</div>
+
+<div>
+  <%= f.label :locality %>
+  <%= f.text_field :locality %>
+</div>
+
+<div>
+  <%= f.label :region %>
+  <%= f.text_field :region %>
+</div>
+
+
+<div>
+  <%= f.label :postal_code %>
+  <%= f.text_field :postal_code %>
+</div>
+
+
+<div>
+  <%= f.label :country %>
+  <%= f.text_field :country %>
+</div>
+
+
+<div>
+  <%= f.label :phone_number %>
+  <%= f.text_field :phone_number %>
+</div>
+
+
+  <%= submit_tag "client.save".t %>
+
+<% end %>

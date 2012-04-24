@@ -1,0 +1,97 @@
+<div>
+  <%= label :profile, :given_name %>
+  <%= @profile.given_name %>
+</div>
+
+<div>
+  <%= label :profile, :family_name %>
+  <%= @profile.family_name %>
+</div>
+
+<div>
+  <%= label :profile, :middle_name %>
+  <%= @profile.middle_name %>
+</div>
+
+
+
+<div>
+  <%= label :profile, :profile %>
+  <%= @profile.profile %>
+</div>
+
+
+<div>
+  <%= label :profile, :picture %>
+  <%= @profile.picture %>
+</div>
+
+
+<div>
+  <%= label :profile, :email %>
+  <%= @profile.email %>
+</div>
+
+
+<div>
+  <%= label :profile, :verified %>
+  <%= @profile.verified %>
+</div>
+
+
+<div>
+  <%= label :profile, :gender %>
+  <%= @profile.gender %>
+</div>
+
+
+<div>
+  <%= label :profile, :birthday %>
+  <%= @profile.birthday %>
+</div>
+
+
+<div>
+  <%= label :profile, :zoneinfo %>
+  <%= @profile.zoneinfo %>
+</div>
+
+<div>
+  <%= label :profile, :locale %>
+  <%= @profile.locale %>
+</div>
+
+<div>
+  <%= label :profile, :street_address %>
+  <%= @profile.street_address %>
+</div>
+
+<div>
+  <%= label :profile, :locality %>
+  <%= @profile.locality %>
+</div>
+
+<div>
+  <%= label :profile, :region %>
+  <%= @profile.region %>
+</div>
+
+
+<div>
+  <%= label :profile, :postal_code %>
+  <%= @profile.postal_code %>
+</div>
+
+
+<div>
+  <%= label :profile, :country %>
+  <%= @profile.country %>
+</div>
+
+
+<div>
+  <%= label :profile, :phone_number %>
+  <%= @profile.phone_number %>
+</div>
+
+<%= button_to :edit, {action: :edit},{:method=>:get} %>

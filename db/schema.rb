@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120229153919) do
+ActiveRecord::Schema.define(:version => 20120419173630) do
 
   create_table "access_token_request_objects", :force => true do |t|
     t.integer  "access_token_id"
@@ -41,11 +41,41 @@ ActiveRecord::Schema.define(:version => 20120229153919) do
   create_table "accounts", :force => true do |t|
     t.string   "identifier"
     t.datetime "last_logged_in_at"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
   end
 
+  add_index "accounts", ["email"], :name => "index_accounts_on_email", :unique => true
   add_index "accounts", ["identifier"], :name => "index_accounts_on_identifier", :unique => true
+  add_index "accounts", ["reset_password_token"], :name => "index_accounts_on_reset_password_token", :unique => true
+
+  create_table "admins", :force => true do |t|
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+  end
+
+  add_index "admins", ["email"], :name => "index_admins_on_email", :unique => true
+  add_index "admins", ["reset_password_token"], :name => "index_admins_on_reset_password_token", :unique => true
 
   create_table "authorization_request_objects", :force => true do |t|
     t.integer  "authorization_id"
@@ -125,6 +155,31 @@ ActiveRecord::Schema.define(:version => 20120229153919) do
     t.string   "id_token"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+  end
+
+  create_table "connect_profiles", :force => true do |t|
+    t.integer  "account_id"
+    t.string   "name"
+    t.string   "given_name"
+    t.string   "family_name"
+    t.string   "middle_name"
+    t.string   "website"
+    t.string   "gender"
+    t.string   "birthday"
+    t.string   "zoneinfo"
+    t.string   "email"
+    t.string   "street_address"
+    t.string   "region"
+    t.string   "locality"
+    t.string   "country"
+    t.string   "postal_code"
+    t.string   "profile"
+    t.string   "picture"
+    t.string   "locale"
+    t.string   "phone_number"
+    t.boolean  "verified"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "id_token_request_objects", :force => true do |t|

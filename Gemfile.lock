@@ -31,11 +31,17 @@ GEM
     ansi (1.4.2)
     arel (3.0.2)
     attr_required (0.0.5)
+    bcrypt-ruby (3.0.1)
     builder (3.0.0)
     coderay (1.0.5)
     constant_cache (0.0.2)
       activerecord (>= 2.0.2)
       activesupport (>= 2.0.2)
+    devise (2.0.4)
+      bcrypt-ruby (~> 3.0)
+      orm_adapter (~> 0.0.3)
+      railties (~> 3.1)
+      warden (~> 1.1.1)
     erubis (2.7.0)
     fb_graph (2.4.9)
       httpclient (>= 2.2.0.2)
@@ -72,6 +78,7 @@ GEM
       tzinfo
       validate_email
       validate_url
+    orm_adapter (0.0.6)
     polyamorous (0.5.0)
       activerecord (~> 3.0)
     polyglot (0.3.3)
@@ -143,12 +150,15 @@ GEM
       mail (>= 2.2.5)
     validate_url (0.2.0)
       activemodel (>= 3.0.0)
+    warden (1.1.1)
+      rack (>= 1.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   constant_cache
+  devise
   fb_graph
   html5_validators
   jquery-rails

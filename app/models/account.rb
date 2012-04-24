@@ -1,8 +1,13 @@
 class Account < ActiveRecord::Base
-  has_one :facebook, class_name: 'Connect::Facebook'
-  has_one :google,   class_name: 'Connect::Google'
-  has_one :fake,     class_name: 'Connect::Fake'
-  has_many :clients
+  # Include default devise modules. Others available are:
+  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
+
+  # Setup accessible (or protected) attributes for your model
+  attr_accessible :email, :password, :password_confirmation, :remember_me
+  has_one :profile,     class_name: 'Connect::Profile'
+  has_many :clients, :through=>:authorizations, :uniq=>true
   has_many :access_tokens
   has_many :authorizations
   has_many :id_tokens
@@ -13,7 +18,7 @@ class Account < ActiveRecord::Base
   validates :identifier, presence: true, uniqueness: true
 
   def to_response_object(access_token)
-    user_info = (google || facebook || fake).user_info
+    user_info = profile.user_info
     unless access_token.accessible?(Scope::PROFILE)
       user_info.all_attributes.each do |attribute|
         user_info.send("#{attribute}=", nil) unless access_token.accessible?(attribute)
@@ -34,5 +39,7 @@ class Account < ActiveRecord::Base
 
   def setup
     self.identifier = SecureRandom.hex(8)
+    self.profile = Connect::Profile.new
   end
+  
 end

@@ -1,0 +1,16 @@
+<article class="authorization">
+  <h3>
+    <%= authorization.client.name %>
+   
+  </h3>
+  <details>
+    <summary>Scopes</summary>
+    <dl>
+
+      <dd><%= authorization.scopes.collect{|s| " #{s.name}"} %></dd>
+    </dl>
+    <footer>
+      <%= link_to 'destroy'.t, authorization_path(authorization), :class => 'destroy', method: :delete %>
+    </footer>
+  </details>
+</article>

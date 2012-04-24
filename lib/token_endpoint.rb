@@ -4,6 +4,7 @@ class TokenEndpoint
 
   def initialize
     @app = Rack::OAuth2::Server::Token.new do |req, res|
+      binding.pry
       client = Client.find_by_identifier(req.client_id) || req.invalid_client!
       client.secret == req.client_secret || req.invalid_client!
       case req.grant_type
